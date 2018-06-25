@@ -27,16 +27,16 @@ def tap_point(x,y):
     os.system(command)
 
 #判断图片是否存在某位置图像，同时随机点按
-def judge_pic_state(mark_pic, image, pic_size_dict ,sleep_time, threshold, type):
+def judge_pic_state(mark_pic, image, pic_size_dict, tap_area_dict ,sleep_time, threshold, type):
 
     real_time_pic = get_picture_part(image, pic_size_dict)
     difference = cv.subtract(mark_pic, real_time_pic)
     result = np.mean(difference)
     if result <= threshold:
-        x_offset = int(abs(pic_size_dict['x1'] - pic_size_dict['x2']) / 2)
-        y_offset = int(abs(pic_size_dict['y1'] - pic_size_dict['y2']) / 2)
-        tap_x = (pic_size_dict['x1'] + pic_size_dict['x2']) / 2 + random.randint(-x_offset,x_offset)
-        tap_y = (pic_size_dict['y1'] + pic_size_dict['y2']) / 2 + random.randint(-y_offset,y_offset)
+        x_offset = int(abs(tap_area_dict['x1'] - tap_area_dict['x2']) / 2)
+        y_offset = int(abs(tap_area_dict['y1'] - tap_area_dict['y2']) / 2)
+        tap_x = (tap_area_dict['x1'] + tap_area_dict['x2']) / 2 + random.randint(-x_offset,x_offset)
+        tap_y = (tap_area_dict['y1'] + tap_area_dict['y2']) / 2 + random.randint(-y_offset,y_offset)
         tap_point(tap_x, tap_y)
         tap_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         log_str = tap_time + ' ' +type + ' ' + '(' + str(tap_x) + ',' + str(tap_y) + ')\n'
@@ -45,7 +45,7 @@ def judge_pic_state(mark_pic, image, pic_size_dict ,sleep_time, threshold, type)
             print(log_str)
             print("***********************************")
             log_file.write(log_str)
-        a = random.randint(5, 15)
+        a = random.randint(1, 8)
         time.sleep(sleep_time + a / 10)
         return True
     else:
@@ -79,20 +79,20 @@ def start(use_wechat):
             os.system(stop_command)
             sys.exit(0)
         #判断是否存在挑战按钮
-        if judge_pic_state(challenge_btn, image, constant.challenge_btn, 0, 0.01, 'challenge_btn'):
+        if judge_pic_state(challenge_btn, image, constant.challenge_btn, constant.challenge_btn , 0, 0.01, 'challenge_btn'):
             continue
 
-        #判断是否战斗胜利，存在误触影响，不考虑
-        # if judge_pic_state(win_mark_drum, image, constant.win_mark_drum, 1, 0.2, 'win_mark_drum'):
-        #     continue
+        #判断是否战斗胜利
+        if judge_pic_state(win_mark_drum, image, constant.win_mark_drum, constant.win_mark_drum_tap, 0, 0.2, 'win_mark_drum'):
+            continue
 
         #判断是否到了宝箱出现的结束界面
-        if judge_pic_state(win_mark_box, image, constant.win_mark_box, 1, 0.2 ,'win_mark_box'):
+        if judge_pic_state(win_mark_box, image, constant.win_mark_box, constant.win_mark_box_tap, 0, 0.2 ,'win_mark_box'):
             stop_times_threshold = 0
             continue
 
         #判断是否战斗失败
-        if judge_pic_state(single_failure, image, constant.single_failure, 0, 2, 'single_failure'):
+        if judge_pic_state(single_failure, image, constant.single_failure, constant.single_failure_tap , 0, 2, 'single_failure'):
             continue
 
 

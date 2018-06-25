@@ -31,5 +31,5 @@ def cut_picture(name,out_name,coordinate):
 
 if __name__ == '__main__':
     #save_screen_cap('yuhun_single_win')
-    #show_pic('yuhun_single_win.png')
-    cut_picture('yuhun_single_win','win_mark_drum',constant.win_mark_drum)
+    show_pic('yuhun_end_win.png')
+    #cut_picture('yuhun_single_win','win_mark_drum',constant.win_mark_drum)
