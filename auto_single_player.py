@@ -1,5 +1,4 @@
 #coding:utf-8
-
 import os
 import time
 import cv2 as cv
@@ -34,13 +33,19 @@ def judge_pic_state(mark_pic, image, pic_size_dict ,sleep_time, threshold, type)
     difference = cv.subtract(mark_pic, real_time_pic)
     result = np.mean(difference)
     if result <= threshold:
-        print(type, result)
         x_offset = int(abs(pic_size_dict['x1'] - pic_size_dict['x2']) / 2)
         y_offset = int(abs(pic_size_dict['y1'] - pic_size_dict['y2']) / 2)
-
-        tap_point((pic_size_dict['x1'] + pic_size_dict['x2']) / 2 + random.randint(-x_offset,x_offset),
-                  (pic_size_dict['y1'] + pic_size_dict['y2']) / 2 + random.randint(-y_offset,y_offset))
-        a = random.randint(1, 10)
+        tap_x = (pic_size_dict['x1'] + pic_size_dict['x2']) / 2 + random.randint(-x_offset,x_offset)
+        tap_y = (pic_size_dict['y1'] + pic_size_dict['y2']) / 2 + random.randint(-y_offset,y_offset)
+        tap_point(tap_x, tap_y)
+        tap_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        log_str = tap_time + ' ' +type + ' ' + '(' + str(tap_x) + ',' + str(tap_y) + ')\n'
+        with open('./yys_log/' + constant.device_id + 'auto_single_player.txt' ,'a') as log_file:
+            print("***********************************")
+            print(log_str)
+            print("***********************************")
+            log_file.write(log_str)
+        a = random.randint(5, 15)
         time.sleep(sleep_time + a / 10)
         return True
     else:
@@ -58,7 +63,6 @@ def start(use_wechat):
     stop_times_threshold = 0
     while True:
         image = save_screen_cap(constant.device_id, './yys_temp/')
-        print('stop_times_threshold', stop_times_threshold)
         stop_times_threshold = stop_times_threshold + 1
         if stop_times_threshold >= 50:
             if use_wechat == True:
@@ -90,8 +94,6 @@ def start(use_wechat):
         #判断是否战斗失败
         if judge_pic_state(single_failure, image, constant.single_failure, 0, 2, 'single_failure'):
             continue
-
-        time.sleep(0.3)
 
 
 if __name__ == '__main__':
