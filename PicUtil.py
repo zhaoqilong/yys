@@ -30,6 +30,6 @@ def cut_picture(name,out_name,coordinate):
     cv.imwrite('./yys_mark/' + out_name + "_" + constant.device_id +'.png' ,image)
 
 if __name__ == '__main__':
-    #save_screen_cap('yuhun_single_win')
-    show_pic('yuhun_end_win.png')
+    save_screen_cap('yuhun_single_win')
+    #show_pic('yuhun_end_win.png')
     #cut_picture('yuhun_single_win','win_mark_drum',constant.win_mark_drum)

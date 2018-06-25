@@ -1,5 +1,6 @@
 #coding:utf-8
 #MI5
+#小米5的设备id
 device_id = 'c84e662d'
 #组队开始按钮
 start_fighting = {

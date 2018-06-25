@@ -40,7 +40,7 @@ def judge_pic_state(mark_pic, image, pic_size_dict, tap_area_dict ,sleep_time, t
         tap_point(tap_x, tap_y)
         tap_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         log_str = tap_time + ' ' +type + ' ' + '(' + str(tap_x) + ',' + str(tap_y) + ')\n'
-        with open('./yys_log/' + constant.device_id + 'auto_single_player.txt' ,'a') as log_file:
+        with open('./yys_log/' + constant.device_id + '_auto_single_player.txt' ,'a') as log_file:
             print("***********************************")
             print(log_str)
             print("***********************************")
@@ -67,17 +67,18 @@ def start(use_wechat):
         if stop_times_threshold >= 50:
             if use_wechat == True:
                 wechat.send_question('your single_player_auto.py is down')
-            name = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-            save_screen_cap(name, './yys_pic_log')
-            time.sleep(10)
-            sys.exit(0)
+            time.sleep(5)
 
         if stop_times_threshold >= 100:
             if use_wechat == True:
                 wechat.send_question('your single_player_auto.py will shut')
+            name = time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime())
+            save_screen_cap(name, './yys_pic_log')
+            time.sleep(10)
             stop_command = 'adb -s '+ constant.device_id +' shell am force-stop com.netease.onmyoji'
             os.system(stop_command)
             sys.exit(0)
+
         #判断是否存在挑战按钮
         if judge_pic_state(challenge_btn, image, constant.challenge_btn, constant.challenge_btn , 0, 0.01, 'challenge_btn'):
             continue
@@ -93,8 +94,9 @@ def start(use_wechat):
 
         #判断是否战斗失败
         if judge_pic_state(single_failure, image, constant.single_failure, constant.single_failure_tap , 0, 2, 'single_failure'):
+            stop_times_threshold = 0
             continue
 
 
 if __name__ == '__main__':
-    start(use_wechat=False)
+    start(use_wechat=True)
