@@ -2,10 +2,10 @@
 import os
 import time
 import cv2 as cv
-import Constant_MI8 as constant
 import numpy as np
 import random
 import sys
+import argparse
 
 
 def save_screen_cap(pic_name, path):
@@ -92,4 +92,9 @@ def start():
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='manual to this script')
+    parser.add_argument('--phone', type=str, default=None)
+    args = parser.parse_args()
+    global constant
+    constant = __import__('Constant_' + args.phone)
     start()

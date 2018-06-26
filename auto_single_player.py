@@ -2,11 +2,13 @@
 import os
 import time
 import cv2 as cv
-import Constant_MI8 as constant
+#import Constant_MI8 as constant
+import argparse
 import numpy as np
 import random
 import sys
 from WeChatUtils import WechatUtils
+
 
 
 def save_screen_cap(pic_name, path):
@@ -99,4 +101,10 @@ def start(use_wechat):
 
 
 if __name__ == '__main__':
-    start(use_wechat=False)
+    parser = argparse.ArgumentParser(description='manual to this script')
+    parser.add_argument('--phone', type=str, default='MI5')
+    parser.add_argument('--wechat', type=bool, default=False)
+    args = parser.parse_args()
+    global constant
+    constant = __import__('Constant_' + args.phone)
+    start(use_wechat=args.wechat)
