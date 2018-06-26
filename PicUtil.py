@@ -30,6 +30,9 @@ def cut_picture(name,out_name,coordinate):
     cv.imwrite('./yys_mark/' + out_name + "_" + constant.device_id +'.png' ,image)
 
 if __name__ == '__main__':
-    save_screen_cap('yuhun_single_win')
-    #show_pic('yuhun_end_win.png')
-    #cut_picture('yuhun_single_win','win_mark_drum',constant.win_mark_drum)
+    #save_screen_cap('yuhun_f_team_mi5')
+    #show_pic('yuhun_box_team_mi5.png')
+    cut_picture('yuhun_box_team_mi5','team_win_mark_box',constant.team_win_mark_box)
+    cut_picture('yuhun_create_team_mi5','start_fighting',constant.start_fighting)
+    cut_picture('yuhun_drum_team_mi5','team_win_mark_drum',constant.team_win_mark_drum)
+    cut_picture('yuhun_f_team_mi5','team_failure',constant.team_failure)

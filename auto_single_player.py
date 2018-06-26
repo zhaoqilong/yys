@@ -2,7 +2,7 @@
 import os
 import time
 import cv2 as cv
-import Constant_MI5 as constant
+import Constant_MI8 as constant
 import numpy as np
 import random
 import sys
@@ -99,4 +99,4 @@ def start(use_wechat):
 
 
 if __name__ == '__main__':
-    start(use_wechat=True)
+    start(use_wechat=False)
