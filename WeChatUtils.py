@@ -1,7 +1,5 @@
 #coding:utf-8
-import sys
 import itchat
-from itchat.content import *
 
 
 def lc():

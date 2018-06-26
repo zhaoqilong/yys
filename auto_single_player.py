@@ -94,10 +94,10 @@ def start(use_wechat):
             stop_times_threshold = 0
             continue
 
-        #判断是否战斗失败
-        if judge_pic_state(single_failure, image, constant.single_failure, constant.single_failure_tap , 0, 2, 'single_failure'):
-            stop_times_threshold = 0
-            continue
+        # #判断是否战斗失败
+        # if judge_pic_state(single_failure, image, constant.single_failure, constant.single_failure_tap , 0, 2, 'single_failure'):
+        #     stop_times_threshold = 0
+        #     continue
 
 
 if __name__ == '__main__':
