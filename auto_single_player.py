@@ -9,8 +9,6 @@ import random
 import sys
 from WeChatUtils import WechatUtils
 
-
-
 def save_screen_cap(pic_name, path):
     screencap = 'adb -s '+ constant.device_id +' shell /system/bin/screencap -p /sdcard/' + pic_name + '.png'
     save_picture = 'adb -s '+ constant.device_id +' pull /sdcard/' + pic_name + '.png ' + path
@@ -44,7 +42,7 @@ def judge_pic_state(mark_pic, image, pic_size_dict, tap_area_dict ,sleep_time, t
         log_str = tap_time + ' ' +type + ' ' + '(' + str(tap_x) + ',' + str(tap_y) + ')\n'
         with open('./yys_log/' + constant.device_id + '_auto_single_player.txt' ,'a') as log_file:
             print("***********************************")
-            print(log_str)
+            print(log_str.strip('\n'))
             print("***********************************")
             log_file.write(log_str)
         a = random.randint(1, 8)
@@ -74,9 +72,6 @@ def start(use_wechat):
         if stop_times_threshold >= 100:
             if use_wechat == True:
                 wechat.send_question('your single_player_auto.py will shut')
-            name = time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime())
-            save_screen_cap(name, './yys_pic_log')
-            time.sleep(10)
             stop_command = 'adb -s '+ constant.device_id +' shell am force-stop com.netease.onmyoji'
             os.system(stop_command)
             sys.exit(0)

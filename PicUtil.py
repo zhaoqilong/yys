@@ -3,7 +3,7 @@
 import os
 import time
 import cv2 as cv
-import Constant_MUMU as constant
+import Constant_MI5 as constant
 import numpy as np
 
 
@@ -30,9 +30,20 @@ def cut_picture(name,out_name,coordinate):
     cv.imwrite('./yys_mark/' + out_name + "_" + constant.device_id +'.png' ,image)
 
 if __name__ == '__main__':
-    save_screen_cap('MM_test')
-    #show_pic('yuhun_box_team_mi5.png')
-    #cut_picture('yuhun_box_team_mi8','team_win_mark_box',constant.team_win_mark_box)
+    #save_screen_cap('kekkai1')
+    #show_pic('yuhun_end_win.png')
+    #cut_picture('kekkai1','tupo_ticket',constant.tupo_ticket)
     #cut_picture('yuhun_box_team_mi8','win_mark_box',constant.win_mark_box)
-    # cut_picture('yuhun_drum_team_mi5','team_win_mark_drum',constant.team_win_mark_drum)
+    cut_picture('yuhun_end_win','win_mark_drum',constant.win_mark_drum)
     # cut_picture('yuhun_f_team_mi5','team_failure',constant.team_failure)
+
+
+
+
+
+
+
+
+
+
+
