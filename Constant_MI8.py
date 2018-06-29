@@ -42,7 +42,7 @@ single_failure = {
 win_mark_drum_tap = {
     'y1':131,
     'y2':895,
-     'x1':160,
+     'x1':180,
     'x2':330
 }
 
@@ -50,7 +50,7 @@ win_mark_drum_tap = {
 win_mark_box_tap={
     'y1':131,
     'y2':895,
-     'x1':160,
+     'x1':180,
     'x2':330
 }
 
@@ -58,7 +58,7 @@ win_mark_box_tap={
 single_failure_tap={
     'y1':131,
     'y2':895,
-     'x1':160,
+     'x1':180,
     'x2':330
 }
 

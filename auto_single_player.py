@@ -26,6 +26,12 @@ def tap_point(x,y):
     command = 'adb -s '+ constant.device_id +' shell input tap ' + str(int(x)) + ' ' + str(int(y))
     os.system(command)
 
+
+def stop_yys():
+    stop_command = 'adb -s ' + constant.device_id + ' shell am force-stop com.netease.onmyoji'
+    os.system(stop_command)
+    sys.exit(0)
+
 #判断图片是否存在某位置图像，同时随机点按
 def judge_pic_state(mark_pic, image, pic_size_dict, tap_area_dict ,sleep_time, threshold, type):
 
@@ -51,7 +57,7 @@ def judge_pic_state(mark_pic, image, pic_size_dict, tap_area_dict ,sleep_time, t
     else:
         return False
 
-def start(use_wechat):
+def start(use_wechat, stop_times_threshold, battle_times_threshold, sleep):
 
     friend_name = 'main'
     if use_wechat==True:
@@ -60,24 +66,29 @@ def start(use_wechat):
     win_mark_box = cv.imread('./yys_mark/win_mark_box_' + constant.device_id + '.png')
     win_mark_drum = cv.imread('./yys_mark/win_mark_drum_' + constant.device_id + '.png')
     single_failure = cv.imread('./yys_mark/single_failure_' + constant.device_id + '.png')
-    stop_times_threshold = 0
+    stop_times = 0
+    battle_times = 0
     while True:
         image = save_screen_cap(constant.device_id, './yys_temp/')
-        stop_times_threshold = stop_times_threshold + 1
-        if stop_times_threshold >= 50:
-            if use_wechat == True:
-                wechat.send_question('your single_player_auto.py is down')
-            time.sleep(5)
+        stop_times = stop_times + 1
+        # if stop_times_threshold >= 50:
+        #     if use_wechat == True:
+        #         wechat.send_question('your single_player_auto.py is down')
+        #     time.sleep(5)
 
-        if stop_times_threshold >= 100:
+        if stop_times >= stop_times_threshold:
             if use_wechat == True:
-                wechat.send_question('your single_player_auto.py will shut')
-            stop_command = 'adb -s '+ constant.device_id +' shell am force-stop com.netease.onmyoji'
-            os.system(stop_command)
-            sys.exit(0)
+                wechat.send_question('游戏因为异常退出！！')
+            stop_yys()
+
+        if battle_times >= battle_times_threshold:
+            if use_wechat == True:
+                wechat.send_question('打完了，游戏关闭！！')
+            stop_yys()
 
         #判断是否存在挑战按钮
         if judge_pic_state(challenge_btn, image, constant.challenge_btn, constant.challenge_btn , 0, 0.01, 'challenge_btn'):
+            time.sleep(sleep)
             continue
 
         #判断是否战斗胜利
@@ -86,20 +97,28 @@ def start(use_wechat):
 
         #判断是否到了宝箱出现的结束界面
         if judge_pic_state(win_mark_box, image, constant.win_mark_box, constant.win_mark_box_tap, 0, 0.2 ,'win_mark_box'):
+            stop_times = 0
+            battle_times = battle_times + 1
+            continue
+
+        #判断是否战斗失败
+        if judge_pic_state(single_failure, image, constant.single_failure, constant.single_failure_tap , 0, 2, 'single_failure'):
             stop_times_threshold = 0
             continue
 
-        # #判断是否战斗失败
-        # if judge_pic_state(single_failure, image, constant.single_failure, constant.single_failure_tap , 0, 2, 'single_failure'):
-        #     stop_times_threshold = 0
-        #     continue
+        #todo 判断是不是出现了悬赏邀请！！！！
 
 
 if __name__ == '__main__':
+    #todo 通过命令行参数配置对应类型的战斗
     parser = argparse.ArgumentParser(description='manual to this script')
     parser.add_argument('--phone', type=str, default='MI5')
     parser.add_argument('--wechat', type=bool, default=False)
+    parser.add_argument('--stop', type=int, default=100)
+    parser.add_argument('--battle', type=int, default=25)
+    parser.add_argument('--sleep', type=int, default=20)
+
     args = parser.parse_args()
     global constant
     constant = __import__('Constant_' + args.phone)
-    start(use_wechat=args.wechat)
+    start(use_wechat=args.wechat, stop_times_threshold=args.stop, battle_times_threshold = args.battle, sleep = args.sleep)

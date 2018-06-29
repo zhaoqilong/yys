@@ -45,7 +45,7 @@ def judge_pic_state(mark_pic, image, pic_size_dict, tap_area_dict ,sleep_time, t
         else:
             tap_point(tap_x, tap_y)
         tap_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-        log_str = tap_time + ' ' +type + ' ' + '(' + str(tap_x) + ',' + str(tap_y) + ')\n'
+        log_str = tap_time + ' ' +type + ' ' + '(' + str(tap_x) + ',' + str(tap_y) + ') result:'+ str(result) + '\n'
         print("***********************************")
         print(log_str.strip('\n'))
         print("***********************************")
@@ -84,6 +84,10 @@ def start(leader):
         if judge_pic_state(win_mark_box, image, constant.team_win_mark_box, constant.win_mark_box_tap, 0, 0.2 ,'team_win_mark_box'):
             stop_times_threshold = 0
             continue
+
+
+        #todo 增加判断是不是出现悬赏的逻辑，防止出错
+        #todo 使用更高效的截图和点击操作方式
 
 
 
