@@ -56,7 +56,7 @@ def judge_pic_state(mark_pic, image, pic_size_dict, tap_area_dict ,sleep_time, t
 
 def start(leader):
 
-    start_fighting = cv.imread('./yys_mark/start_fighting_' + constant.device_id + '.png')
+    team_start_fighting = cv.imread('./yys_mark/team_start_fighting_' + constant.device_id + '.png')
     win_mark_box = cv.imread('./yys_mark/team_win_mark_box_' + constant.device_id + '.png')
     win_mark_drum = cv.imread('./yys_mark/team_win_mark_drum_' + constant.device_id + '.png')
     team_failure = cv.imread('./yys_mark/team_failure_' + constant.device_id + '.png')
@@ -73,7 +73,7 @@ def start(leader):
 
         #判断是否存在开始战斗按钮
         if leader == True:
-            if judge_pic_state(start_fighting, image, constant.start_fighting, constant.start_fighting , 0, 0.01, 'start_fighting'):
+            if judge_pic_state(team_start_fighting, image, constant.team_start_fighting, constant.team_start_fighting , 0, 0.01, 'team_start_fighting'):
                 continue
 
         #判断是否战斗胜利
@@ -93,8 +93,8 @@ def start(leader):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='manual to this script')
-    parser.add_argument('--phone', type=str, default=None)
-    parser.add_argument('--leader', type=bool, default=None)
+    parser.add_argument('--phone', type=str, default='MI8')
+    parser.add_argument('--leader', type=bool, default='False')
     args = parser.parse_args()
     global constant
     constant = __import__('Constant_' + args.phone)

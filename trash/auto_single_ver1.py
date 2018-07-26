@@ -10,13 +10,13 @@ import sys
 from WeChatUtils import WechatUtils
 
 def save_screen_cap(pic_name, path):
-    screencap = 'adb -s '+ constant.device_id +' shell /system/bin/screencap -p /sdcard/' + pic_name + '.png'
-    save_picture = 'adb -s '+ constant.device_id +' pull /sdcard/' + pic_name + '.png ' + path
-    delete_picture = 'adb -s '+ constant.device_id +' shell rm /sdcard/' + pic_name + '.png'
+    screencap = 'adb -s ' + constant.device_id + ' shell /system/bin/screencap -p /sdcard/' + pic_name + '.png'
+    save_picture = 'adb -s ' + constant.device_id + ' pull /sdcard/' + pic_name + '.png ' + path + ' > /dev/null'
+    delete_picture = 'adb -s ' + constant.device_id + ' shell rm /sdcard/' + pic_name + '.png'
     os.system(screencap)
     os.system(save_picture)
     os.system(delete_picture)
-    image = cv.imread(path + pic_name+'.png')
+    image = cv.imread(path + pic_name + '.png')
     return image
 
 def get_picture_part(image, coordinate):
@@ -103,7 +103,7 @@ def start(use_wechat, stop_times_threshold, battle_times_threshold, sleep):
 
         #判断是否战斗失败
         if judge_pic_state(single_failure, image, constant.single_failure, constant.single_failure_tap , 0, 2, 'single_failure'):
-            stop_times_threshold = 0
+            stop_times = 0
             continue
 
         #todo 判断是不是出现了悬赏邀请！！！！
@@ -112,7 +112,7 @@ def start(use_wechat, stop_times_threshold, battle_times_threshold, sleep):
 if __name__ == '__main__':
     #todo 通过命令行参数配置对应类型的战斗
     parser = argparse.ArgumentParser(description='manual to this script')
-    parser.add_argument('--phone', type=str, default='MI5')
+    parser.add_argument('--phone', type=str, default='MI8')
     parser.add_argument('--wechat', type=bool, default=False)
     parser.add_argument('--stop', type=int, default=100)
     parser.add_argument('--battle', type=int, default=25)
