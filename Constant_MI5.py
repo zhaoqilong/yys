@@ -8,15 +8,16 @@ size = '1920x1080'
 
 
 #组队按钮的阈值
-team_win_mark_box_threshold = (0.5,0.2)
+#team_win_mark_box_threshold = (0.5,0.2)
+team_win_mark_box_threshold = (1,0.4)
 team_start_fighting_threshold = (1.0,0.1)
 team_win_mark_drum_threshold = (0.9,0.1)
+reward_threshold = (2, 0.3)
+later_btn_threshold = (1, 0.3)
 
 # team_start_fighting_threshold = (1.0742,0.0001)
 # team_win_mark_drum_threshold = (0.8954,0.0001)
 
-
-#单人胜利之后出现大鼓时候点击位置，防止时延影响点到不该点的位置
 team_win_mark_drum_tap = {
     'y1':275,
     'y2':723,
@@ -24,7 +25,6 @@ team_win_mark_drum_tap = {
     'x2':290
 }
 
-#胜利之后出现宝箱之后，点击位置，防止时延影响点到不该点的位置
 team_win_mark_box_tap={
      'y1':275,
     'y2':723,
@@ -70,4 +70,32 @@ team_win_mark_box={
     'y2':936,
     'x1':804,
     'x2':1085
+}
+
+reward={
+    'y1':243,
+    'y2':278,
+    'x1':782,
+    'x2':822
+}
+
+reward_tap={
+    'y1':753,
+    'y2':814,
+    'x1':1249,
+    'x2':1312
+}
+
+later_btn={
+    'y1':601,
+    'y2':675,
+    'x1':715,
+    'x2':890
+}
+
+later_btn_tap={
+    'y1':601,
+    'y2':675,
+    'x1':715,
+    'x2':890
 }

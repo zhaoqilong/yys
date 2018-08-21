@@ -6,7 +6,10 @@ size = '2248x1080'
 
 team_start_fighting_threshold = (1.2,0.1)
 team_win_mark_drum_threshold = (0.8,0.1)
-team_win_mark_box_threshold = (0.6,0.3)
+team_win_mark_box_threshold = (0.8,0.2)
+reward_threshold = (2, 0.3)
+later_btn_threshold = (1, 0.3)
+
 
 
 
@@ -67,5 +70,31 @@ team_win_mark_box={
     'x2':1323
 }
 
-#如果战斗过程中出现了悬赏封印，要对悬赏封印进行处理
+reward={
+    'y1':243,
+    'y2':278,
+    'x1':1003,
+    'x2':1038
+}
+
+reward_tap={
+    'y1':751,
+    'y2':817,
+    'x1':1467,
+    'x2':1513
+}
+
+later_btn={
+    'y1':597,
+    'y2':672,
+    'x1':826,
+    'x2':1005
+}
+
+later_btn_tap={
+     'y1':597,
+    'y2':672,
+    'x1':826,
+    'x2':1005
+}
 

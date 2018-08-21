@@ -23,7 +23,6 @@ def tap_point(x,y):
     command = 'adb -s '+ constant.device_id +' shell input tap ' + str(int(x)) + ' ' + str(int(y))
     os.system(command)
 
-
 def stop_yys():
     stop_command = 'adb -s ' + constant.device_id + ' shell am force-stop com.netease.onmyoji'
     os.system(stop_command)
@@ -35,9 +34,6 @@ def judge_pic_state(mark_pic, image, pic_size_dict, tap_area_dict, threshold, ty
     real_time_pic = get_picture_part(image, pic_size_dict)
     difference = cv.subtract(mark_pic, real_time_pic)
     result = np.mean(difference)
-    print("***********************************")
-    print( type + str(result))
-    print("***********************************")
 
     if abs(result - threshold[0]) < threshold[1]:
         x_offset = int(abs(tap_area_dict['x1'] - tap_area_dict['x2']) / 2)
@@ -69,17 +65,16 @@ def start(use_wechat):
         image = save_screen_cap_with_minicap(constant.device_id, './yys_temp/')
         stop_times = stop_times + 1
 
-        # if stop_times >= 1000:
-        #     if use_wechat == True:
-        #         wechat.send_question('游戏因为异常退出！！')
-        #     stop_yys()
+        if stop_times >= 3000:
+            if use_wechat == True:
+                wechat.send_question('游戏因为异常退出！！')
+            stop_yys()
 
         #判断是否存在挑战按钮
         if judge_pic_state(challenge_btn, image, constant.challenge_btn, constant.challenge_btn , constant.single_challenge_btn_threshold, 'challenge_btn'):
             continue
 
         #判断是否到了宝箱出现的结束界面
-
         if judge_pic_state(win_mark_box, image, constant.win_mark_box, constant.win_mark_box_tap, constant.single_win_mark_box_threshold ,'win_mark_box'):
             stop_times = 0
             battle_times = battle_times + 1
@@ -90,20 +85,19 @@ def start(use_wechat):
             stop_times = 0
             continue
 
+        #判断是否出现网络错误
         if judge_pic_state(net_lost, image, constant.net_lost, constant.net_lost, constant.net_lost_threshold, 'net_lost'):
             stop_times = 0
             continue
 
-
-
+        #判断是否出现了悬赏，如果出现了就点一下悬赏按钮，这里增加一个选项，悬赏接不接的判断
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='manual to this script')
     parser.add_argument('--phone', type=str, default='MI5')
     parser.add_argument('--wechat', type=bool, default=False)
-
     args = parser.parse_args()
     global constant
-    constant = __import__('Constant_' + args.phone)
+    constant = __import__('Constant_single_' + args.phone)
     start(use_wechat=args.wechat)

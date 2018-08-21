@@ -38,18 +38,19 @@ def cut_picture(name,out_name,coordinate):
     cv.imwrite('./yys_mark/' + out_name + "_" + constant.device_id +'.jpg' ,image)
 
 if __name__ == '__main__':
-    # save_screen_cap_v1('test')
-    save_screen_cap_with_minicap('Mi8_reward','./yys_screenshots')
 
-    # show_pic('MI5_net_lost.jpg')
-    # show_pic('Mi8_team_start_fighting.jpg')
-    # show_pic('Mi8_team_win_mark_box.jpg')
+    #save_screen_cap_v1('test')
+    #save_screen_cap_with_minicap('Mi8_later_btn','./yys_screenshots')
+
+    #show_pic('Mi8_later_btn.jpg')
+    #show_pic('Mi8_reward.jpg')
+    # show_pic('Mi5_team_change.jpg')
     # show_pic('Mi8_team_win_mark_drum.jpg')
     # show_pic('Mi8_team_win_mark_drum.jpg')
 
-    # cut_picture('Mi8_team_failure.jpg','team_failure',constant.team_failure2)
+    # cut_picture('Mi5_team_change.jpg','Mi5_team_change',constant.Mi5_team_change)
     # cut_picture('Mi8_team_start_fighting.jpg', 'start_fighting', constant.start_fighting2)
-    #cut_picture('Mi8_invite.jpg', 'net_lost', constant.net_lost)
+    cut_picture('Mi8_later_btn.jpg', 'later_btn', constant.later_btn)
 
 
     # cut_picture('Mi5_single_failure.jpg', 'single_failure', constant.single_failure)
