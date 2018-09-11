@@ -40,20 +40,24 @@ def cut_picture(name,out_name,coordinate):
 if __name__ == '__main__':
 
     #save_screen_cap_v1('test')
-    #save_screen_cap_with_minicap('Mi8_later_btn','./yys_screenshots')
+    #save_screen_cap_with_minicap('Mi8_continue_join','./yys_screenshots')
+    #save_screen_cap_with_minicap('Mi5_continue_team','./yys_screenshots')
+#
 
-    #show_pic('Mi8_later_btn.jpg')
-    #show_pic('Mi8_reward.jpg')
+    #show_pic('Mi5_continue_team.jpg')
+    show_pic('Mi5_later_btn.jpg')
     # show_pic('Mi5_team_change.jpg')
     # show_pic('Mi8_team_win_mark_drum.jpg')
     # show_pic('Mi8_team_win_mark_drum.jpg')
 
-    # cut_picture('Mi5_team_change.jpg','Mi5_team_change',constant.Mi5_team_change)
+    #cut_picture('Mi8_damo.jpg','damo',constant.team_damo)
+
+
     # cut_picture('Mi8_team_start_fighting.jpg', 'start_fighting', constant.start_fighting2)
-    cut_picture('Mi8_later_btn.jpg', 'later_btn', constant.later_btn)
+    # cut_picture('Mi8_later_btn.jpg', 'later_btn', constant.later_btn)
 
 
-    # cut_picture('Mi5_single_failure.jpg', 'single_failure', constant.single_failure)
+    #cut_picture('Mi5_reward.jpg', 'reward', constant.reward)
     # cut_picture('Mi5_win_mark_box.jpg','win_mark_box',constant.win_mark_box)
     # cut_picture('Mi5_win_mark_drum.jpg','win_mark_drum',constant.win_mark_drum)
     # cut_picture('Mi5_challenge_btn.jpg','challenge_btn',constant.challenge_btn)

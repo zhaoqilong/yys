@@ -5,11 +5,11 @@ device_id = '61e08bf1'
 size = '2248x1080'
 
 team_start_fighting_threshold = (1.2,0.1)
-team_win_mark_drum_threshold = (0.8,0.1)
-team_win_mark_box_threshold = (0.8,0.2)
-reward_threshold = (2, 0.3)
-later_btn_threshold = (1, 0.3)
-
+team_win_mark_drum_threshold = (0.9,0.4)
+team_win_mark_box_threshold = (1,0.4)
+reward_threshold = (1, 0.5)
+later_btn_threshold = (1, 0.5)
+damo_threshold = (2, 1)
 
 
 
@@ -71,10 +71,10 @@ team_win_mark_box={
 }
 
 reward={
-    'y1':243,
-    'y2':278,
-    'x1':1003,
-    'x2':1038
+    'y1':241,
+    'y2':289,
+    'x1':1064,
+    'x2':1362
 }
 
 reward_tap={
@@ -96,5 +96,19 @@ later_btn_tap={
     'y2':672,
     'x1':826,
     'x2':1005
+}
+
+team_damo = {
+    'y1': 434,
+    'y2': 667,
+    'x1': 1057,
+    'x2': 1294
+}
+
+team_damo_tap = {
+    'y1': 434,
+    'y2': 667,
+    'x1': 1057,
+    'x2': 1294
 }
 

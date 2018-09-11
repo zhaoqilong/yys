@@ -8,12 +8,13 @@ size = '1920x1080'
 
 
 #组队按钮的阈值
-#team_win_mark_box_threshold = (0.5,0.2)
-team_win_mark_box_threshold = (1,0.4)
+team_win_mark_box_threshold = (0.8,0.6)
+#team_win_mark_box_threshold = (1,0.4)
 team_start_fighting_threshold = (1.0,0.1)
-team_win_mark_drum_threshold = (0.9,0.1)
-reward_threshold = (2, 0.3)
-later_btn_threshold = (1, 0.3)
+team_win_mark_drum_threshold = (0.8,0.4)
+reward_threshold = (1, 0.5)
+later_btn_threshold = (1, 0.5)
+damo_threshold = (3, 2)
 
 # team_start_fighting_threshold = (1.0742,0.0001)
 # team_win_mark_drum_threshold = (0.8954,0.0001)
@@ -73,10 +74,10 @@ team_win_mark_box={
 }
 
 reward={
-    'y1':243,
-    'y2':278,
-    'x1':782,
-    'x2':822
+    'y1':240,
+    'y2':288,
+    'x1':849,
+    'x2':1143
 }
 
 reward_tap={
@@ -98,4 +99,18 @@ later_btn_tap={
     'y2':675,
     'x1':715,
     'x2':890
+}
+
+team_damo = {
+    'y1':424,
+    'y2':662,
+    'x1':840,
+    'x2':1087
+}
+
+team_damo_tap = {
+    'y1':424,
+    'y2':662,
+    'x1':840,
+    'x2':1087
 }

@@ -54,7 +54,6 @@ def judge_pic_state(mark_pic, image, pic_size_dict, tap_area_dict , threshold, t
     # print(str(type) + "  " + str(result))
     # print("***************************************")
 
-
     if abs(result - threshold[0]) <= threshold[1]:
         if type == 'team_win_mark_drum':
             tap_point(tap_area_dict, type, result)
@@ -65,13 +64,19 @@ def judge_pic_state(mark_pic, image, pic_size_dict, tap_area_dict , threshold, t
     else:
         return False
 
-def start(leader):
+
+
+
+
+
+def start(is_leader):
 
     team_start_fighting = cv.imread('./yys_mark/team_start_fighting_' + constant.device_id + '.jpg')
     team_win_mark_box = cv.imread('./yys_mark/team_win_mark_box_' + constant.device_id + '.jpg')
     team_win_mark_drum = cv.imread('./yys_mark/team_win_mark_drum_' + constant.device_id + '.jpg')
     reward = cv.imread('./yys_mark/reward_' + constant.device_id + '.jpg')
     later_btn = cv.imread('./yys_mark/later_btn_' + constant.device_id + '.jpg')
+    damo = cv.imread('./yys_mark/damo_' + constant.device_id + '.jpg')
     stop_times_threshold = 0
     battle_times = 0
     battle_start_time = datetime.datetime.now()
@@ -84,42 +89,50 @@ def start(leader):
             pass
 
         #判断是否出现了悬赏，自定点击不接受
-        if judge_pic_state(reward, image, constant.reward, constant.reward_tap,constant.reward_threshold, 'reward'):
+        if judge_pic_state(reward, image, constant.reward, constant.reward_tap,
+                           constant.reward_threshold, 'reward'):
             time.sleep(2)
             continue
 
         #判断是否出现了宠物或者其他对话框，这时候应该点击稍后
-        if judge_pic_state(later_btn, image, constant.later_btn, constant.later_btn_tap,constant.later_btn_threshold, 'later_btn'):
+        if judge_pic_state(later_btn, image, constant.later_btn, constant.later_btn_tap,
+                           constant.later_btn_threshold, 'later_btn'):
             time.sleep(2)
             continue
 
 
         #判断是否存在开始战斗按钮
-        if leader == True:
-            if judge_pic_state(team_start_fighting, image, constant.team_start_fighting, constant.team_start_fighting , constant.team_start_fighting_threshold, 'team_start_fighting'):
+        if is_leader == True:
+            if judge_pic_state(team_start_fighting, image, constant.team_start_fighting,
+                               constant.team_start_fighting , constant.team_start_fighting_threshold, 'team_start_fighting'):
                 battle_end_time = datetime.datetime.now()
+                battle_times = battle_times + 1
                 battle_duration = battle_end_time - battle_start_time
                 battle_start_time = battle_end_time
-                battle_times = battle_times + 1
-
+                times_log = "************ 第%s次御魂 用时%s************" % (str(battle_times), str(battle_duration))
+                log_file = open('./yys_log/' + constant.device_id + 'auto_team.txt', 'a')
+                log_file.write(times_log + '\n')
+                log_file.close()
                 time.sleep(2)
                 continue
 
+            #判断是否出现了
+
+
+        # # 判断是否出现达摩
+        if judge_pic_state(damo, image, constant.team_damo, constant.team_damo_tap,
+                               constant.damo_threshold, 'team_damo'):
+            continue
+
 
         #判断是否战斗胜利
-        if judge_pic_state(team_win_mark_drum, image, constant.team_win_mark_drum, constant.team_win_mark_drum_tap, constant.team_win_mark_drum_threshold, 'team_win_mark_drum'):
-            battle_end_time = datetime.datetime.now()
-            battle_duration = battle_end_time - battle_start_time
-            battle_start_time = battle_end_time
-            battle_times = battle_times + 1
-            times_log = "************ 第%s次御魂 用时%s************" % (str(battle_times), str(battle_duration))
-            log_file = open('./yys_log/' + constant.device_id + 'auto_team.txt', 'a')
-            log_file.write(times_log + '\n')
-            log_file.close()
+        if judge_pic_state(team_win_mark_drum, image, constant.team_win_mark_drum,
+                           constant.team_win_mark_drum_tap, constant.team_win_mark_drum_threshold, 'team_win_mark_drum'):
             continue
 
         #判断是否到了宝箱出现的结束界面
-        if judge_pic_state(team_win_mark_box, image, constant.team_win_mark_box, constant.team_win_mark_box_tap, constant.team_win_mark_box_threshold ,'team_win_mark_box'):
+        if judge_pic_state(team_win_mark_box, image, constant.team_win_mark_box,
+                           constant.team_win_mark_box_tap, constant.team_win_mark_box_threshold ,'team_win_mark_box'):
             stop_times_threshold = 0
             continue
 
@@ -128,9 +141,9 @@ def start(leader):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='manual to this script')
-    parser.add_argument('--phone', type=str, default='MI5')
-    parser.add_argument('--leader', type=bool, default=True)
+    parser.add_argument('--p', type=str, default='5')
+    parser.add_argument('--l', type=str, default='f')
     args = parser.parse_args()
     global constant
-    constant = __import__('Constant_' + args.phone)
-    start(args.leader)
+    constant = __import__('Constant_MI' + args.p)
+    start(args.l == 't')
