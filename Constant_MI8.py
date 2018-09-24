@@ -5,11 +5,16 @@ device_id = '61e08bf1'
 size = '2248x1080'
 
 team_start_fighting_threshold = (1.2,0.1)
-team_win_mark_drum_threshold = (0.9,0.4)
-team_win_mark_box_threshold = (1,0.4)
-reward_threshold = (1, 0.5)
-later_btn_threshold = (1, 0.5)
+team_win_mark_drum_threshold = (0.9,0.6)
+team_win_mark_box_threshold = (1,0.6)
+reward_threshold = (1, 0.6)
+later_btn_threshold = (1, 0.6)
 damo_threshold = (2, 1)
+net_lost_threshold = (1,0.6)
+buff_on_threshold = (1,0.6)
+buff_off_threshold = (1,0.6)
+buff_area_threshold = (2,0.8)
+
 
 
 
@@ -110,5 +115,26 @@ team_damo_tap = {
     'y2': 667,
     'x1': 1057,
     'x2': 1294
+}
+
+net_lost = {
+    'y1':598,
+    'y2':664,
+    'x1':1094,
+    'x2':1259
+}
+
+buff_area = {
+    'y1': 56,
+    'y2': 107,
+    'x1': 741,
+    'x2': 793
+}
+
+buff_btn = {
+    'y1': 296,
+    'y2': 350,
+    'x1': 1531,
+    'x2': 1593
 }
 

@@ -11,10 +11,17 @@ size = '1920x1080'
 team_win_mark_box_threshold = (0.8,0.6)
 #team_win_mark_box_threshold = (1,0.4)
 team_start_fighting_threshold = (1.0,0.1)
-team_win_mark_drum_threshold = (0.8,0.4)
-reward_threshold = (1, 0.5)
-later_btn_threshold = (1, 0.5)
+team_win_mark_drum_threshold = (0.8,0.5)
+reward_threshold = (1, 0.6)
+later_btn_threshold = (1, 0.6)
 damo_threshold = (3, 2)
+net_lost_threshold = (1, 0.6)
+buff_area_threshold = (2,0.8)
+buff_on_threshold = (0.5,0.4)
+buff_off_threshold = (0.5,0.4)
+
+
+
 
 # team_start_fighting_threshold = (1.0742,0.0001)
 # team_win_mark_drum_threshold = (0.8954,0.0001)
@@ -114,3 +121,25 @@ team_damo_tap = {
     'x1':840,
     'x2':1087
 }
+
+net_lost = {
+    'y1':601,
+    'y2':666,
+    'x1':870,
+    'x2':1045
+}
+
+buff_area = {
+    'y1': 48,
+    'y2': 109,
+    'x1': 630,
+    'x2': 680
+}
+
+buff_btn = {
+    'y1': 296,
+    'y2': 351,
+    'x1': 1312,
+    'x2': 1371
+}
+

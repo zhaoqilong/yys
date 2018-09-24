@@ -9,7 +9,14 @@ size = '1920x1080'
 single_win_mark_box_threshold = (1.4,0.1)
 single_failure_threshold = (1.4,0.3)
 single_challenge_btn_threshold = (0.9,0.1)
-net_lost_threshold = (0.9,0.1)
+
+reward_threshold = (1, 0.6)
+later_btn_threshold = (1, 0.6)
+damo_threshold = (3, 2)
+net_lost_threshold = (1, 0.6)
+buff_area_threshold = (2,0.8)
+buff_on_threshold = (0.5,0.4)
+buff_off_threshold = (0.5,0.4)
 
 
 net_lost = {
@@ -71,3 +78,68 @@ single_failure_tap={
     'x1':200,
     'x2':290
 }
+
+
+reward={
+    'y1':240,
+    'y2':288,
+    'x1':849,
+    'x2':1143
+}
+
+reward_tap={
+    'y1':753,
+    'y2':814,
+    'x1':1249,
+    'x2':1312
+}
+
+later_btn={
+    'y1':601,
+    'y2':675,
+    'x1':715,
+    'x2':890
+}
+
+later_btn_tap={
+    'y1':601,
+    'y2':675,
+    'x1':715,
+    'x2':890
+}
+
+team_damo = {
+    'y1':424,
+    'y2':662,
+    'x1':840,
+    'x2':1087
+}
+
+team_damo_tap = {
+    'y1':424,
+    'y2':662,
+    'x1':840,
+    'x2':1087
+}
+
+net_lost = {
+    'y1':601,
+    'y2':666,
+    'x1':870,
+    'x2':1045
+}
+
+buff_area = {
+    'y1': 48,
+    'y2': 109,
+    'x1': 630,
+    'x2': 680
+}
+
+buff_btn = {
+    'y1': 296,
+    'y2': 351,
+    'x1': 1312,
+    'x2': 1371
+}
+

@@ -58,6 +58,8 @@ def start(use_wechat):
     win_mark_box = cv.imread('./yys_mark/win_mark_box_' + constant.device_id + '.jpg')
     net_lost = cv.imread('./yys_mark/net_lost_' + constant.device_id + '.jpg')
     single_failure = cv.imread('./yys_mark/single_failure_' + constant.device_id + '.jpg')
+    reward = cv.imread('./yys_mark/reward_' + constant.device_id + '.jpg')
+    later_btn = cv.imread('./yys_mark/later_btn_' + constant.device_id + '.jpg')
     stop_times = 0
     battle_times = 0
 
@@ -90,7 +92,18 @@ def start(use_wechat):
             stop_times = 0
             continue
 
-        #判断是否出现了悬赏，如果出现了就点一下悬赏按钮，这里增加一个选项，悬赏接不接的判断
+        # 判断是否出现了悬赏，自定点击不接受
+        if judge_pic_state(reward, image, constant.reward, constant.reward_tap,
+                               constant.reward_threshold, 'reward'):
+            time.sleep(2)
+            continue
+
+        # 判断是否出现了宠物或者其他对话框，这时候应该点击稍后
+        if judge_pic_state(later_btn, image, constant.later_btn, constant.later_btn_tap,
+                               constant.later_btn_threshold, 'later_btn'):
+            time.sleep(2)
+            continue
+
 
 
 if __name__ == '__main__':
@@ -100,4 +113,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     global constant
     constant = __import__('Constant_single_' + args.phone)
-    start(use_wechat=args.wechat)
+    start(False)

@@ -59,7 +59,7 @@ def start():
 
     later_btn = cv.imread('./yys_mark/later_btn_' + constant.device_id + '.jpg')
 
-    image = cv.imread("./yys_debug/" + "reward_bug" + '.jpg')
+    image = cv.imread("./yys_debug/" + "61e08bf1__exception" + '.jpg')
 
     if judge_pic_state(reward, image, constant.reward, constant.reward_tap,constant.reward_threshold, 'reward'):
         pass
@@ -80,7 +80,7 @@ def start():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='manual to this script')
-    parser.add_argument('--phone', type=str, default='MI5')
+    parser.add_argument('--phone', type=str, default='MI8')
     args = parser.parse_args()
     global constant
     constant = __import__('Constant_' + args.phone)
