@@ -35,7 +35,7 @@ class AndroidUtil(object):
                      self.device_size + \
                      '@' + self.device_size + \
                      '/0 -s > /mnt/sdcard/yys/' + \
-                     self.device_id + '.jpg\" '
+                     self.device_id + '.jpg\" 1>/dev/null 2>/dev/null'
         save_picture = 'adb -s ' + self.device_id + ' pull /mnt/sdcard/yys/' + \
                        self.device_id + '.jpg ' + save_path + ' > /dev/null'
         os.system(screen_cap)
