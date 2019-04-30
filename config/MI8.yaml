@@ -1,0 +1,64 @@
+device_info:
+  device_name: 'MI8'
+  device_id: '61e08bf1'
+  device_size: '2248x1080'
+
+operator_config:
+  sleep_after_start:
+    hunshi: 35
+    yuling: 20
+    juexing: 5
+
+
+
+picture_info:
+
+  buff:
+    x1: 774
+    y1: 42
+    x2: 838
+    y2: 123
+    threshold: 1
+    offset: 0.5
+  challenge_btn:
+    x1: 1518
+    y1: 708
+    x2: 1709
+    y2: 782
+    threshold: 1
+    offset: 0.5
+  fight_data:
+    x1: 76
+    y1: 76
+    x2: 162
+    y2: 133
+    threshold: 1
+    offset: 0.5
+  end_tap:
+    x1: 1807
+    y1: 101
+    x2: 2004
+    y2: 522
+    threshold: 1
+    offset: 0.5
+  xuanshang:
+    x1: 933
+    y1: 238
+    x2: 990
+    y2: 288
+    threshold: 1.3
+    offset: 0.5
+  xuanshang_tap:
+    x1: 1320
+    y1: 165
+    x2: 1379
+    y2: 212
+    threshold: 1
+    offset: 0.5
+  win_drum:
+    x1: 957
+    y1: 879
+    x2: 1275
+    y2: 928
+    threshold: 0.6
+    offset: 0.3
