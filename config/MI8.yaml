@@ -62,3 +62,24 @@ picture_info:
     y2: 928
     threshold: 0.6
     offset: 0.3
+  yuxin_challenge:
+    x1: 1797
+    y1: 759
+    x2: 1902
+    y2: 851
+    threshold: 1
+    offset: 0.5
+  prepare:
+    x1: 1870
+    y1: 913
+    x2: 2033
+    y2: 989
+    threshold: 1
+    offset: 0.5
+  prepare_tap:
+    x1: 1877
+    y1: 770
+    x2: 2039
+    y2: 884
+    threshold: 1
+    offset: 0.5

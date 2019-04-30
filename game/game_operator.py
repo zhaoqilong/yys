@@ -9,6 +9,7 @@ import random
 
 __all__ = ['GameOperator']
 
+
 class GameOperator(object):
 
     def __init__(self, device_config: DeviceConfig):
@@ -28,9 +29,11 @@ class GameOperator(object):
         self.fight_data = cv.imread('./picture/yys_mark/' + self.device_name + '_fight_data.jpg')
         self.xuanshang = cv.imread('./picture/yys_mark/' + self.device_name + '_xuanshang.jpg')
         self.win_drum = cv.imread('./picture/yys_mark/' + self.device_name + '_win_drum.jpg')
+        self.prepare = cv.imread('./picture/yys_mark/' + self.device_name + '_prepare.jpg')
 
         # todo 网络错误
 
+        # 点击位置
         self.buff_coor = self.picture_info.get('buff')
         self.challenge_btn_coor = self.picture_info.get('challenge_btn')
         self.fight_data_coor = self.picture_info.get('fight_data')
@@ -38,6 +41,9 @@ class GameOperator(object):
         self.xuanshang_coor = self.picture_info.get('xuanshang')
         self.xuanshang_tap = self.picture_info.get('xuanshang_tap')
         self.win_drum_coor = self.picture_info.get('win_drum')
+        self.prepare_coor = self.picture_info.get('prepare')
+        self.prepare_tap = self.picture_info.get('prepare_tap')
+
         self.phone_picture = None
 
     def get_phone_picture(self):
@@ -76,6 +82,16 @@ class GameOperator(object):
 
     def tap_after_challenge_btn(self):
         tap_coor = self.random_tap(self.challenge_btn_coor)
+        self.android_utils.tap_point(tap_coor[0], tap_coor[1])
+
+    def is_prepare(self):
+        is_match, result = self.judge_pic_state(self.prepare, self.prepare_coor)
+        if is_match:
+            print('is_prepare ' + str(result))
+        return is_match
+
+    def tap_after_prepare(self):
+        tap_coor = self.random_tap(self.prepare_tap)
         self.android_utils.tap_point(tap_coor[0], tap_coor[1])
 
     def is_buff(self):
