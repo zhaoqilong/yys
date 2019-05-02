@@ -20,3 +20,8 @@ class PictureUtil(object):
         image = cv.imread(load_path + name)
         cv.imshow("Image", image)
         cv.waitKey(0)
+
+    @staticmethod
+    def show_current_crop(image, coordinate):
+        cv.imshow("Image", image[coordinate['y1']: coordinate['y2'], coordinate['x1']: coordinate['x2']])
+        cv.waitKey(0)
