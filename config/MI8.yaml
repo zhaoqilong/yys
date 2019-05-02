@@ -4,7 +4,7 @@ device_info:
   device_size: '2248x1080'
 
 operator_config:
-  log_type: 'file'
+  log_type: 'screen'
   sleep_after_start:
     hunshi: 35
     yuling: 20

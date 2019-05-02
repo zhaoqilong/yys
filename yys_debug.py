@@ -13,9 +13,5 @@ if __name__ == '__main__':
     game_operator = LidaoGameOperator(device_config)
     stop_times = 1000
     current_times = 0
-
-
     game_operator.get_phone_picture()
-    game_operator.show_current_crop(None)
-
-
+    # game_operator.show_current_crop(None)
