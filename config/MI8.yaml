@@ -76,12 +76,12 @@ picture_info:
     threshold: 1
     offset: 0.5
   yuxin_challenge:
-    x1: 1798
-    y1: 760
-    x2: 1899
-    y2: 855
-    threshold: 1.2
-    offset: 0.1
+    x1: 1792
+    y1: 761
+    x2: 1907
+    y2: 861
+    threshold: 1
+    offset: 0.5
   xuanshang2:
     x1: 939
     y1: 240
@@ -89,3 +89,4 @@ picture_info:
     y2: 284
     threshold: 1.8
     offset: 0.6
+

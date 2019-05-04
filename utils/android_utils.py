@@ -61,3 +61,6 @@ class AndroidUtil(object):
         stop_command = 'adb -s ' + self.device_id + ' shell am force-stop com.netease.onmyoji'
         os.system(stop_command)
 
+if __name__ == '__main__':
+    str = 'adb -s emulator-5554 shell \"$LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -P 1280x720@1280x720/0& LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -P 1280x720@1280x720/0 -s > /sdcard/haha.jpg\" '
+    os.system(str)

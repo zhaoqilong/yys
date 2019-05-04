@@ -39,3 +39,4 @@ if __name__ == '__main__':
 
         if current_times > stop_times:
             game_operator.stop()
+            exit(0)
