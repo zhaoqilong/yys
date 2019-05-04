@@ -7,6 +7,7 @@ import time
 import cv2 as cv
 import numpy as np
 import random
+import pathlib as Path
 
 __all__ = ['GameOperator']
 
@@ -117,7 +118,6 @@ class GameOperator(object):
         if is_match:
             self.log_utils.log('is_xuanshang2 ', result)
         return is_match
-
 
     def tap_after_xuanshang(self):
         tap_coor = self.random_tap(self.xuanshang_tap)

@@ -4,6 +4,8 @@ device_info:
   device_size: '2248x1080'
   # minicap, screencap, MuMu
   device_cap_type: 'minicap'
+  # mac, win
+  sys_type: 'mac'
 
 operator_config:
   log_type: 'screen'
