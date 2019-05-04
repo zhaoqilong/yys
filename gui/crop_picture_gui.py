@@ -2,6 +2,7 @@
 from tkinter import *
 from utils.image_crop_utils import ImageCropUtils
 from utils.android_utils import AndroidUtil
+import time
 
 __all__ = ['CropPictureGUI']
 
@@ -39,6 +40,7 @@ class CropPictureGUI(object):
         load_path = './picture/yys_screenshots/'
         save_path = './picture/yys_mark/'
         android_utils = AndroidUtil(self.config)
-        android_utils.save_screen_cap_with_mini_cap(load_path)
+        android_utils.save_screen_cap(load_path)
+        time.sleep(3)
         crop_utils = ImageCropUtils(self.config)
         crop_utils.crop_picture(load_path, image_name, save_path)

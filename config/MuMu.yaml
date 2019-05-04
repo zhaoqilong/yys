@@ -1,0 +1,89 @@
+device_info:
+  device_name: 'MuMu'
+  device_id: 'emulator-5554'
+  device_size: '1280x720'
+  # minicap, screencap
+  device_cap_type: 'screencap'
+
+operator_config:
+  log_type: 'screen'
+  sleep_after_start:
+    hunshi: 35
+    yuling: 20
+    juexing: 5
+
+picture_info:
+
+
+  xuanshang:
+    x1: 933
+    y1: 238
+    x2: 990
+    y2: 288
+    threshold: 1.8
+    offset: 0.6
+  xuanshang_tap:
+    x1: 1419
+    y1: 596
+    x2: 1499
+    y2: 660
+    threshold: 1
+    offset: 0.5
+  xuanshang2:
+    x1: 939
+    y1: 240
+    x2: 985
+    y2: 284
+    threshold: 1.8
+    offset: 0.6
+
+
+  challenge_btn:
+    x1: 894
+    y1: 471
+    x2: 1011
+    y2: 518
+    threshold: 1
+    offset: 3
+  fight_data:
+    x1: 50
+    y1: 48
+    x2: 105
+    y2: 89
+    threshold: 1
+    offset: 0.5
+  end_tap:
+    x1: 1072
+    y1: 145
+    x2: 1180
+    y2: 507
+    threshold: 1
+    offset: 0.5
+  win_box:
+    x1: 532
+    y1: 594
+    x2: 730
+    y2: 621
+    threshold: 0.8
+    offset: 0.4
+  yuxin_challenge:
+    x1: 1064
+    y1: 508
+    x2: 1136
+    y2: 563
+    threshold: 1.55
+    offset: 0.2
+  prepare:
+    x1: 1121
+    y1: 624
+    x2: 1219
+    y2: 661
+    threshold: 0.7
+    offset: 0.05
+  prepare_tap:
+    x1: 1122
+    y1: 514
+    x2: 1214
+    y2: 582
+    threshold: 1
+    offset: 0.5

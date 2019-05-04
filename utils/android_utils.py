@@ -1,31 +1,29 @@
-# coding:utf-8
+# -*- coding: UTF-8 -*-
 import cv2 as cv
 import os
+from PIL import Image
+
 import sys
 
 __all__ = ['AndroidUtil']
 
 '''工具类，主要用于截图和点击操作，截图使用的minicap，安装较为繁琐'''
+
+
 class AndroidUtil(object):
 
     def __init__(self, device_info):
         self.config = device_info
         self.device_id = device_info.get('device_id')
         self.device_size = device_info.get('device_size')
+        self.device_cap_type = device_info.get('device_cap_type')
 
 
     '''使用minicap进行截图, 并获取到图片实例'''
-    def get_screen_cap_with_mini_cap(self):
+    def get_screen_cap(self):
         save_path = './picture/yys_temp/'
-        self.save_screen_cap_with_mini_cap(save_path)
+        self.save_screen_cap(save_path)
         image = cv.imread(save_path + self.device_id + '.jpg')
-        return image
-
-    ''' 安卓系统自带的截图方法，并获取到图片实例'''
-    def get_screen_cap_with_android_sys(self):
-        save_path = './picture/yys_temp/'
-        self.save_screen_cap_with_android_sys(save_path)
-        image = cv.imread(save_path + self.device_id + '.png')
         return image
 
     '''使用minicap进行截图，并将截图存储到save_path里'''
@@ -43,13 +41,20 @@ class AndroidUtil(object):
 
     '''使用android系统自带的方式截图并存储到save_path里'''
     def save_screen_cap_with_android_sys(self, save_path):
-        screen_cap = 'adb -s ' + self.device_id + ' shell /system/bin/screencap -p /sdcard/' + self.device_id + '.png'
+        screen_cap = 'adb -s ' + self.device_id + ' shell /system/bin/screencap -p /sdcard/yys/' + self.device_id + '.png'
         save_picture = 'adb -s ' + self.device_id + ' pull /sdcard/yys/' + \
                         self.device_id + '.png ' + save_path + ' > /dev/null'
-        delete_picture = 'adb -s ' + self.device_id + ' shell rm /sdcard/yys/' + self.device_id + '.png'
         os.system(screen_cap)
         os.system(save_picture)
-        os.system(delete_picture)
+        im = Image.open(save_path + self.device_id + '.png')
+        rgb_im = im.convert('RGB')
+        rgb_im.save(save_path + self.device_id + '.jpg')
+
+    def save_screen_cap(self, save_path):
+        if self.device_cap_type == 'minicap':
+            self.save_screen_cap_with_mini_cap(save_path)
+        elif self.device_cap_type == 'screencap':
+            self.save_screen_cap_with_android_sys(save_path)
 
     '''点击坐标'''
     def tap_point(self, x, y):
@@ -60,7 +65,3 @@ class AndroidUtil(object):
     def stop_yys(self):
         stop_command = 'adb -s ' + self.device_id + ' shell am force-stop com.netease.onmyoji'
         os.system(stop_command)
-
-if __name__ == '__main__':
-    str = 'adb -s emulator-5554 shell \"$LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -P 1280x720@1280x720/0& LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -P 1280x720@1280x720/0 -s > /sdcard/haha.jpg\" '
-    os.system(str)

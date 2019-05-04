@@ -52,7 +52,7 @@ class GameOperator(object):
         self.picture_utils = PictureUtil
 
     def get_phone_picture(self):
-        self.phone_picture = self.android_utils.get_screen_cap_with_mini_cap()
+        self.phone_picture = self.android_utils.get_screen_cap()
 
     def judge_pic_state(self, mark, coor):
         if self.phone_picture is None:
@@ -131,6 +131,6 @@ class GameOperator(object):
         return [tap_x, tap_y]
 
     def stop(self):
-        self.android_utils.save_screen_cap_with_mini_cap('./picture/yys_exception')
+        self.android_utils.save_screen_cap('./picture/yys_exception')
         time.sleep(10)
         self.android_utils.stop_yys()

@@ -6,10 +6,10 @@ __all__ = ['ImageCropUtils']
 
 class ImageCropUtils(object):
 
-    def __init__(self, device_config):
-        self.config = device_config
-        self.device_id = device_config.get('device_id')
-        self.device_name = device_config.get('device_name')
+    def __init__(self, device_info):
+        self.config = device_info
+        self.device_id = device_info.get('device_id')
+        self.device_name = device_info.get('device_name')
         self.point1 = None
         self.point2 = None
 

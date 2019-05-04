@@ -2,6 +2,8 @@ device_info:
   device_name: 'MI8'
   device_id: '61e08bf1'
   device_size: '2248x1080'
+  # minicap, screencap, MuMu
+  device_cap_type: 'minicap'
 
 operator_config:
   log_type: 'screen'
@@ -80,8 +82,8 @@ picture_info:
     y1: 761
     x2: 1907
     y2: 861
-    threshold: 1
-    offset: 0.5
+    threshold: 0.93
+    offset: 0.05
   xuanshang2:
     x1: 939
     y1: 240
