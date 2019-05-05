@@ -33,6 +33,7 @@ class GameOperator(object):
         self.xuanshang2 = cv.imread('./picture/yys_mark/' + self.device_name + '_xuanshang2.jpg')
         self.win_box = cv.imread('./picture/yys_mark/' + self.device_name + '_win_box.jpg')
         self.prepare = cv.imread('./picture/yys_mark/' + self.device_name + '_prepare.jpg')
+        self.team_challenge_btn = cv.imread('./picture/yys_mark/' + self.device_name + '_team_challenge_btn.jpg')
 
         # todo 网络错误
 
@@ -47,6 +48,7 @@ class GameOperator(object):
         self.win_box_coor = self.picture_info.get('win_box')
         self.prepare_coor = self.picture_info.get('prepare')
         self.prepare_tap = self.picture_info.get('prepare_tap')
+        self.team_challenge_btn_coor = self.picture_info.get('team_challenge_btn')
 
         self.phone_picture = None
         self.log_utils = LogUtils(device_config)
@@ -121,6 +123,16 @@ class GameOperator(object):
 
     def tap_after_xuanshang(self):
         tap_coor = self.random_tap(self.xuanshang_tap)
+        self.android_utils.tap_point(tap_coor[0], tap_coor[1])
+
+    def is_team_challenge_btn(self):
+        is_match, result = self.judge_pic_state(self.team_challenge_btn, self.team_challenge_btn_coor)
+        if is_match:
+            self.log_utils.log('is_team_challenge_btn ', result)
+        return is_match
+
+    def tap_after_team_challenge_btn(self):
+        tap_coor = self.random_tap(self.team_challenge_btn_coor)
         self.android_utils.tap_point(tap_coor[0], tap_coor[1])
 
     def random_tap(self, coor):

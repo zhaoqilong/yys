@@ -29,14 +29,14 @@ picture_info:
     x2: 1709
     y2: 782
     threshold: 1
-    offset: 0.5
+    offset: 1
   fight_data:
     x1: 76
     y1: 76
     x2: 162
     y2: 133
-    threshold: 1
-    offset: 0.5
+    threshold: 1.4
+    offset: 0.2
   end_tap:
     x1: 1807
     y1: 101
@@ -94,3 +94,10 @@ picture_info:
     threshold: 1.8
     offset: 0.6
 
+  team_challenge_btn:
+    x1: 1626
+    y1: 865
+    x2: 1884
+    y2: 933
+    threshold: 1
+    offset: 0.2
