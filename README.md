@@ -11,6 +11,11 @@
 2. 安装opencv
 3. 安装android adb
 
+
+#### linux配置
+1. sudo apt-get install android-tools-adb
+
+
 #### 网易mumu配置
 1. 设置mumu参数
 2. 确认mumu共享文件夹的路径并设置
