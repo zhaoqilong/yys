@@ -25,14 +25,14 @@ class GameOperator(object):
         self.device_id = self.device_info.get('device_id')
         self.sleep_after_start = self.operator_config.get('sleep_after_start')
 
-        self.buff = cv.imread('./picture/yys_mark/' + self.device_name + '_buff.jpg')
-        self.challenge_btn = cv.imread('./picture/yys_mark/' + self.device_name + '_challenge_btn.jpg')
-        self.fight_data = cv.imread('./picture/yys_mark/' + self.device_name + '_fight_data.jpg')
-        self.xuanshang = cv.imread('./picture/yys_mark/' + self.device_name + '_xuanshang.jpg')
-        self.xuanshang2 = cv.imread('./picture/yys_mark/' + self.device_name + '_xuanshang2.jpg')
-        self.win_box = cv.imread('./picture/yys_mark/' + self.device_name + '_win_box.jpg')
-        self.prepare = cv.imread('./picture/yys_mark/' + self.device_name + '_prepare.jpg')
-        self.team_challenge_btn = cv.imread('./picture/yys_mark/' + self.device_name + '_team_challenge_btn.jpg')
+        self.buff = cv.imread('../picture/yys_mark/' + self.device_name + '_buff.jpg')
+        self.challenge_btn = cv.imread('../picture/yys_mark/' + self.device_name + '_challenge_btn.jpg')
+        self.fight_data = cv.imread('../picture/yys_mark/' + self.device_name + '_fight_data.jpg')
+        self.xuanshang = cv.imread('../picture/yys_mark/' + self.device_name + '_xuanshang.jpg')
+        self.xuanshang2 = cv.imread('../picture/yys_mark/' + self.device_name + '_xuanshang2.jpg')
+        self.win_box = cv.imread('../picture/yys_mark/' + self.device_name + '_win_box.jpg')
+        self.prepare = cv.imread('../picture/yys_mark/' + self.device_name + '_prepare.jpg')
+        self.team_challenge_btn = cv.imread('../picture/yys_mark/' + self.device_name + '_team_challenge_btn.jpg')
 
         # todo 网络错误
 

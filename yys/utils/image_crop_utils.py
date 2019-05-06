@@ -14,7 +14,7 @@ class ImageCropUtils(object):
         self.point2 = None
 
     def save_coordinate_with_name(self, image_name):
-        file_path = './config/' + self.device_name + '.yaml'
+        file_path = '../config/' + self.device_name + '.yaml'
         with open(file_path, 'a') as f:
             f.write('  ' + image_name + ':\n')
             f.write('    x1: ' + str(self.point1[0]) + '\n')

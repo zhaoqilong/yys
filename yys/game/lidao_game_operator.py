@@ -11,7 +11,7 @@ class LidaoGameOperator(GameOperator):
 
     def __init__(self, device_config: DeviceConfig):
         super(LidaoGameOperator, self).__init__(device_config)
-        self.yuxin_challenge = cv.imread('./picture/yys_mark/' + self.device_name + '_yuxin_challenge.jpg')
+        self.yuxin_challenge = cv.imread('../picture/yys_mark/' + self.device_name + '_yuxin_challenge.jpg')
         self.yuxin_challenge_coor = self.picture_info.get('yuxin_challenge')
 
     def is_yuxin_challenge(self):

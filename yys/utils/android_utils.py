@@ -21,7 +21,7 @@ class AndroidUtil(object):
 
     '''使用minicap进行截图, 并获取到图片实例'''
     def get_screen_cap(self):
-        save_path = './picture/yys_temp/'
+        save_path = '../picture/yys_temp/'
         self.save_screen_cap(save_path)
         image = cv.imread(save_path + self.device_id + '.jpg')
         return image
