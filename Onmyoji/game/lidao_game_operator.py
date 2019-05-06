@@ -1,12 +1,8 @@
 # coding:utf-8
 
-from utils.device_config import DeviceConfig
-from utils.picture_utils import PictureUtil
-from utils.android_utils import AndroidUtil
-from game.game_operator import GameOperator
+from Onmyoji.utils.device_config import DeviceConfig
+from Onmyoji.game.game_operator import GameOperator
 import cv2 as cv
-import numpy as np
-import random
 
 __init__ = ['LidaoGameOperator']
 

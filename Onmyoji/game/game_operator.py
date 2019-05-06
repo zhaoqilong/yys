@@ -1,13 +1,12 @@
 # coding:utf-8
-from utils.device_config import DeviceConfig
-from utils.picture_utils import PictureUtil
-from utils.android_utils import AndroidUtil
-from utils.log_utils import LogUtils
+from Onmyoji.utils.device_config import DeviceConfig
+from Onmyoji.utils.picture_utils import PictureUtil
+from Onmyoji.utils import AndroidUtil
+from Onmyoji.utils.log_utils import LogUtils
 import time
 import cv2 as cv
 import numpy as np
 import random
-import pathlib as Path
 
 __all__ = ['GameOperator']
 

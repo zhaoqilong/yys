@@ -22,7 +22,7 @@ class LogUtils(object):
         elif self.log_type == 'file':
             print(log_str)
             logging.basicConfig(level=logging.INFO,
-                                filename='./yys_log/'+ self.device_id + '.log',
+                                filename='../log/'+ self.device_id + '.log',
                                 filemode='a')
             logging.info(log_str)
 
