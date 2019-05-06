@@ -1,6 +1,6 @@
 import argparse
-from Onmyoji.utils.device_config import DeviceConfig
-from Onmyoji.gui.crop_picture_gui import CropPictureGUI
+from yys.utils.device_config import DeviceConfig
+from yys.gui.crop_picture_gui import CropPictureGUI
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='manual to this script')

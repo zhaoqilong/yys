@@ -1,8 +1,8 @@
 # coding:utf-8
-from Onmyoji.utils.device_config import DeviceConfig
-from Onmyoji.utils.picture_utils import PictureUtil
-from Onmyoji.utils import AndroidUtil
-from Onmyoji.utils.log_utils import LogUtils
+from yys.utils.device_config import DeviceConfig
+from yys.utils.picture_utils import PictureUtil
+from yys.utils import AndroidUtil
+from yys.utils.log_utils import LogUtils
 import time
 import cv2 as cv
 import numpy as np

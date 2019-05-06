@@ -1,8 +1,8 @@
 # coding:utf-8
 import time
 import argparse
-from Onmyoji.utils.device_config import DeviceConfig
-from Onmyoji.game.game_operator import GameOperator
+from yys.utils.device_config import DeviceConfig
+from yys.game.game_operator import GameOperator
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='manual to this script')
@@ -17,20 +17,17 @@ if __name__ == '__main__':
     while True:
         game_operator.get_phone_picture()
         current_times += 1
-        if game_operator.is_challenge_btn():
-            game_operator.tap_after_challenge_btn()
+        if game_operator.is_team_challenge_btn():
+            game_operator.tap_after_team_challenge_btn()
             time.sleep(game_operator.sleep_after_start.get(operator_type))
-            continue
 
         if game_operator.is_xuanshang() or game_operator.is_xuanshang2():
             game_operator.tap_after_xuanshang()
-            continue
 
         if game_operator.is_fight_end() or game_operator.is_win_box():
             game_operator.tap_after_fight_end()
-            time.sleep(3)
+            time.sleep(1)
             current_times = 0
-            continue
 
         if current_times > stop_times:
             game_operator.stop()

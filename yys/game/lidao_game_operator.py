@@ -1,7 +1,7 @@
 # coding:utf-8
 
-from Onmyoji.utils.device_config import DeviceConfig
-from Onmyoji.game.game_operator import GameOperator
+from yys.utils.device_config import DeviceConfig
+from yys.game.game_operator import GameOperator
 import cv2 as cv
 
 __init__ = ['LidaoGameOperator']

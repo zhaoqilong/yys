@@ -1,7 +1,7 @@
 # coding:utf-8
 from tkinter import *
-from Onmyoji.utils import ImageCropUtils
-from Onmyoji.utils import AndroidUtil
+from yys.utils import ImageCropUtils
+from yys.utils import AndroidUtil
 import time
 
 __all__ = ['CropPictureGUI']

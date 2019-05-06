@@ -2,8 +2,8 @@
 # coding:utf-8
 import time
 import argparse
-from Onmyoji.utils.device_config import DeviceConfig
-from Onmyoji.game.lidao_game_operator import LidaoGameOperator
+from yys.utils.device_config import DeviceConfig
+from yys.game.lidao_game_operator import LidaoGameOperator
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='manual to this script')
