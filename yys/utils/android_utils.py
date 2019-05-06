@@ -7,8 +7,6 @@ import sys
 
 __all__ = ['AndroidUtil']
 
-'''工具类，主要用于截图和点击操作，截图使用的minicap，安装较为繁琐'''
-
 
 class AndroidUtil(object):
 
@@ -18,15 +16,12 @@ class AndroidUtil(object):
         self.device_size = device_info.get('device_size')
         self.device_cap_type = device_info.get('device_cap_type')
 
-
-    '''使用minicap进行截图, 并获取到图片实例'''
     def get_screen_cap(self):
         save_path = '../picture/yys_temp/'
         self.save_screen_cap(save_path)
         image = cv.imread(save_path + self.device_id + '.jpg')
         return image
 
-    '''使用minicap进行截图，并将截图存储到save_path里'''
     def save_screen_cap_with_mini_cap(self, save_path):
         screen_cap = 'adb -s ' + self.device_id + \
                      ' shell \"LD_LIBRARY_PATH=/data/local/tmp /data/local/tmp/minicap -P ' + \
@@ -39,7 +34,6 @@ class AndroidUtil(object):
         os.system(screen_cap)
         os.system(save_picture)
 
-    '''使用android系统自带的方式截图并存储到save_path里'''
     def save_screen_cap_with_android_sys(self, save_path):
         screen_cap = 'adb -s ' + self.device_id + ' shell /system/bin/screencap -p /sdcard/yys/' + self.device_id + '.png'
         save_picture = 'adb -s ' + self.device_id + ' pull /sdcard/yys/' + \
@@ -56,12 +50,10 @@ class AndroidUtil(object):
         elif self.device_cap_type == 'screencap':
             self.save_screen_cap_with_android_sys(save_path)
 
-    '''点击坐标'''
     def tap_point(self, x, y):
         command = 'adb -s ' + self.device_id + ' shell input tap ' + str(int(x)) + ' ' + str(int(y))
         os.system(command)
 
-    '''停止阴阳师'''
     def stop_yys(self):
         stop_command = 'adb -s ' + self.device_id + ' shell am force-stop com.netease.onmyoji'
         os.system(stop_command)

@@ -58,8 +58,8 @@ class GameOperator(object):
 
     def judge_pic_state(self, mark, coor):
         if self.phone_picture is None:
-            print('Error')
-            return False
+            raise RuntimeError('No phone_picture Error')
+            return None
         image_crop = PictureUtil.get_picture_part(image=self.phone_picture, coordinate=coor)
         difference = cv.subtract(mark, image_crop)
         result = np.mean(difference)

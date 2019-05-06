@@ -9,6 +9,8 @@ device_info:
 
 operator_config:
   log_type: 'screen'
+  step_threshold: 200
+  empty_loop_threshold: 1000
   sleep_after_start:
     hunshi: 35
     yuling: 20
