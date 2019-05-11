@@ -37,8 +37,8 @@ class CropPictureGUI(object):
         window.mainloop()
 
     def _save_image_show_crop(self, image_name):
-        load_path = './picture/yys_screenshots/'
-        save_path = './picture/yys_mark/'
+        load_path = '../picture/yys_screenshots/'
+        save_path = '../picture/yys_mark/'
         android_utils = AndroidUtil(self.config)
         android_utils.save_screen_cap(load_path)
         time.sleep(3)
