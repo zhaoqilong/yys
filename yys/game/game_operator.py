@@ -33,6 +33,7 @@ class GameOperator(object):
         self.win_box = cv.imread('../picture/yys_mark/' + self.device_name + '_win_box.jpg')
         self.prepare = cv.imread('../picture/yys_mark/' + self.device_name + '_prepare.jpg')
         self.team_challenge_btn = cv.imread('../picture/yys_mark/' + self.device_name + '_team_challenge_btn.jpg')
+        self.yuhun_single_challenge = cv.imread('../picture/yys_mark/' + self.device_name + '_yuhun_single_challenge.jpg')
 
         # todo 网络错误
 
@@ -48,6 +49,7 @@ class GameOperator(object):
         self.prepare_coor = self.picture_info.get('prepare')
         self.prepare_tap = self.picture_info.get('prepare_tap')
         self.team_challenge_btn_coor = self.picture_info.get('team_challenge_btn')
+        self.yuhun_single_challenge_coor = self.picture_info.get('yuhun_single_challenge')
 
         self.phone_picture = None
         self.log_utils = LogUtils(device_config)
@@ -134,6 +136,16 @@ class GameOperator(object):
         tap_coor = self.random_tap(self.team_challenge_btn_coor)
         self.android_utils.tap_point(tap_coor[0], tap_coor[1])
 
+    def is_yuhun_single_challenge(self):
+        is_match, result = self.judge_pic_state(self.yuhun_single_challenge, self.yuhun_single_challenge_coor)
+        if is_match:
+            self.log_utils.log('yuhun_single_challenge ', result)
+        return is_match
+
+    def tap_after_yuhun_single_challenge(self):
+        tap_coor = self.random_tap(self.yuhun_single_challenge_coor)
+        self.android_utils.tap_point(tap_coor[0], tap_coor[1])
+
     def random_tap(self, coor):
         x_offset = int(abs(coor['x1'] - coor['x2']) / 2)
         y_offset = int(abs(coor['y1'] - coor['y2']) / 2)
@@ -145,3 +157,6 @@ class GameOperator(object):
         self.android_utils.save_screen_cap('./picture/yys_exception')
         time.sleep(10)
         self.android_utils.stop_yys()
+
+    def show_current_crop(self):
+        cv.imshow(self.phone_picture)
