@@ -3,7 +3,7 @@
 import time
 import argparse
 from yys.utils.device_config import DeviceConfig
-from yys.game.douji_operator import DoujiGameOperator
+from yys.game.douji_game_operator import DoujiGameOperator
 from yys.utils.exception_utils import ExceptionUtils
 
 if __name__ == '__main__':

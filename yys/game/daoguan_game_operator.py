@@ -11,15 +11,17 @@ class DaoguanGameOperator(GameOperator):
 
     def __init__(self, device_config: DeviceConfig):
         super(DaoguanGameOperator, self).__init__(device_config)
-    #     self.yuxin_challenge = cv.imread('../picture/yys_mark/' + self.device_name + '_yuxin_challenge.jpg')
-    #     self.yuxin_challenge_coor = self.picture_info.get('yuxin_challenge')
-    #
-    # def is_daoguan_challenge(self):
-    #     is_match, result = self.judge_pic_state(self.yuxin_challenge, self.yuxin_challenge_coor)
-    #     if is_match:
-    #         self.log_utils.log('is_daoguan_challenge ', result)
-    #     return is_match
-    #
-    # def tap_after_daoguan_challenge(self):
-    #     tap_coor = self.random_tap(self.yuxin_challenge_coor)
-    #     self.android_utils.tap_point(tap_coor[0], tap_coor[1])
+        self.daoguan_prepare = cv.imread('../picture/yys_mark/' + self.device_name + '_daoguan_prepare.jpg')
+        self.daoguan_prepare_coor = self.picture_info.get('daoguan_prepare')
+        self.daoguan_prepare_tap = self.picture_info.get('daoguan_prepare_tap')
+
+
+    def is_daoguan_prepare(self):
+        is_match, result = self.judge_pic_state(self.daoguan_prepare, self.daoguan_prepare_coor)
+        if is_match:
+            self.log_utils.log('is_daoguan_challenge ', result)
+        return is_match
+
+    def tap_after_daoguan_prepare(self):
+        tap_coor = self.random_tap(self.daoguan_prepare_tap)
+        self.android_utils.tap_point(tap_coor[0], tap_coor[1])
